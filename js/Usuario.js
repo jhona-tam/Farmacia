@@ -51,7 +51,7 @@ $(document).ready(function(){
             $('#adicional').val(usuario.adicional);
         })
     });
-    $('#form_usuario').submit(e=>{
+    $('#form-usuario').submit(e=>{
         if(edit==true){
             let telefono=$('#telefono').val();
             let residencia=$('#residencia').val();
@@ -59,14 +59,14 @@ $(document).ready(function(){
             let sexo=$('#sexo').val();
             let adicional=$('#adicional').val();
             funcion='editar_usuario';
-            $.post('../controlador/UsuarioController.php',{id_usuario,funcion,telefono,residencia,correo,adicional},(response)=>{
+            $.post('../controlador/UsuarioController.php',{id_usuario,funcion,telefono,residencia,correo,sexo,adicional},(response)=>{
                 if(response=='editado'){
                     $('#editado').hide('slow');
                     $('#editado').show(1000);
                     $('#editado').hide(2000);
                     $('#form-usuario').trigger('reset');
                 }
-                edit=false;s
+                edit=false;
                 buscar_usuario(id_usuario);
             })
         }

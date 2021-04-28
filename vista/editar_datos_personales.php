@@ -67,15 +67,15 @@ include_once 'layouts/nav.php'
                                 </strong>
                                 <p id="residencia_us" class="text-muted">945659845</p>
                                 <strong style="color:#0b7300">
-                                    <i class="fas fa-at mr-1"></i>Correo
+                                    <i class="fas fa-envelope mr-1"></i>Correo
                                 </strong>
                                 <p id="correo_us" class="text-muted">945659845</p>
                                 <strong style="color:#0b7300">
-                                    <i class="fas fa-smile-wink mr-1"></i>Sexo
+                                    <i class="fas fa-venus-mars mr-1"></i>Sexo
                                 </strong>
                                 <p id="sexo_us" class="text-muted">945659845</p>
                                 <strong style="color:#0b7300">
-                                    <i class="fas fa-pencil-alt mr-1"></i>Informacion adicional
+                                    <i class="fas fa-user-edit mr-1"></i>Informacion adicional
                                 </strong>
                                 <p id="adicional_us" class="text-muted">945659845</p>    
                                 <button class="edit btn btn-block bg-gradient-danger">Editar</button>                        
