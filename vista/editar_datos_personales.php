@@ -93,10 +93,10 @@ include_once 'layouts/nav.php'
                                 <p id="apellido_us" class="text-muted text-center">Apellidos</p>
                                 <ul class="list-group list-group-unbordered mb-3">
                                     <li class="list-group-item">
-                                        <b style="color:#0b7300">Edad</b><a id="edad" class="float-right">12</a>
+                                        <b style="color:#0b7300">Edad</b><a id="edad" class="float-right text-muted">12</a>
                                     </li>
                                     <li class="list-group-item">
-                                        <b style="color:#0b7300">DNI</b><a id="dni_us" class="float-right">12</a>
+                                        <b style="color:#0b7300">DNI</b><a id="dni_us" class="float-right text-muted">12</a>
                                     </li>
                                     <li class="list-group-item">
                                         <b style="color:#0b7300">Tipo Usuario</b>
