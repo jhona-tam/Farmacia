@@ -1,7 +1,4 @@
-<footer class="main-footer">
-    <div class="float-right d-none d-sm-block">
-      <b>Version</b> 3.1.0
-    </div>
+<footer class="main-footer text-right">
     <strong>Copyright &copy; 2021 <a href="https://adminlte.io">SistemaDeFarmacia</a>.</strong> con derechos reservados.
   </footer>
 </div>
