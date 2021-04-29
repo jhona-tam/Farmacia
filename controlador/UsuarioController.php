@@ -3,12 +3,16 @@ include_once '../modelo/Usuario.php';
 $usuario = new Usuario();
 if($_POST['funcion']=='buscar_usuario'){
     $json=array();
+    $fecha_actual = new DateTime();
     $usuario->obtener_datos($_POST['dato']);
     foreach ($usuario->objetos as $objeto) {
+        $nacimiento = new DateTime($objeto->edad);
+        $edad = $nacimiento->diff($fecha_actual);
+        $edad_years = $edad->y;
         $json[]=array(
             'nombre'=>$objeto->nombre_us,
             'apellidos'=>$objeto->apellidos_us,
-            'edad'=>$objeto->edad,
+            'edad'=>$edad_years,
             'dni'=>$objeto->dni_us,
             'tipo'=>$objeto->nombre_tipo,
             'telefono'=>$objeto->telefono_us,
