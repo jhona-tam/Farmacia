@@ -29,14 +29,14 @@ include_once 'layouts/nav.php'
                 ?>
             </b>
         </div>
-        <div class="card-body">
+        <!--<div class="card-body"> -->
             <div class="alert alert-success text-center" id="update" style='display:none;'>
                 <span><i class="fas fa-check m-1"></i>Se cambio tu contraseña correctamente</span>
             </div>
             <div class="alert alert-danger text-center" id="noupdate" style='display:none;'>
                 <span><i class="fas fa-times m-1"></i>La contraseña no es válida</span>
             </div>
-        </div>
+        <!-- </div> -->
         <form id="form-pass">
             <div class="input-group mb-3">
                 <div class="input-group-prepend">

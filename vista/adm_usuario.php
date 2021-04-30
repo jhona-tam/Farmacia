@@ -1,6 +1,6 @@
 <?php
 session_start();
-if ($_SESSION['us_tipo']==1||$_SESSION['us_tipo']=3){
+if ($_SESSION['us_tipo']==1||$_SESSION['us_tipo']==3){
   include_once 'layouts/header.php'
 ?>
   <title>Adm | Editar Datos</title>
@@ -20,6 +20,12 @@ include_once 'layouts/nav.php'
                 </button>
             </div>
             <div class="card-body">
+              <div class="alert alert-success text-center" id="add" style='display:none;'>
+                <span><i class="fas fa-check m-1"></i>Se agrego correctamente</span>
+              </div>
+              <div class="alert alert-danger text-center" id="noadd" style='display:none;'>
+                <span><i class="fas fa-times m-1"></i>El DNI ya existe en otro usuario</span>
+              </div>
                 <form id="form-crear">
                     <div class="form-group">
                         <label for="nombre">Nombres</label>
@@ -58,7 +64,7 @@ include_once 'layouts/nav.php'
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Gestion usuarios <button type="button" data-toggle="modal" data-target="#crearusuario" class="btn bg-gradient-primary ml-2">Crear usuario</button></h1>
+            <h1>Gestion usuarios <button id="button-crear" type="button" data-toggle="modal" data-target="#crearusuario" class="btn bg-gradient-primary ml-2">Crear usuario</button></h1>
             <input type="hidden" id="tipo_usuario" value="<?php echo $_SESSION['us_tipo']?>">
           </div>
           <div class="col-sm-6">

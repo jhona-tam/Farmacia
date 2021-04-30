@@ -1,5 +1,8 @@
 $(document).ready(function(){
     var tipo_usuario = $('#tipo_usuario').val();
+    if(tipo_usuario==2){
+      $('#button-crear').hide();
+    }
     buscar_datos();
     var funcion;
     function buscar_datos(consulta) {
@@ -78,5 +81,29 @@ $(document).ready(function(){
         else{
             buscar_datos();
         }
-    })
+    });
+    $('#form-crear').submit(e=>{
+      let nombre = $('#nombre').val();
+      let apellido = $('#apellido').val();
+      let edad = $('#edad').val(); 
+      let dni = $('#dni').val();  
+      let pass = $('#pass').val();  
+      funcion='crear_usuario';
+      $.post('../controlador/UsuarioController.php',{nombre,apellido,edad,dni,pass,funcion},(response)=>{
+        if(response=='add'){
+          $('#add').hide('slow');
+          $('#add').show(1000);
+          $('#add').hide(2000);
+          $('#form-crear').trigger('reset');
+          buscar_datos();
+        }
+        else{
+          $('#noadd').hide('slow');
+          $('#noadd').show(1000);
+          $('#noadd').hide(2000);
+          $('#form-crear').trigger('reset');
+        }
+      });
+      e.preventDefault();
+    });
 })
