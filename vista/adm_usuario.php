@@ -8,6 +8,54 @@ if ($_SESSION['us_tipo']==1||$_SESSION['us_tipo']==3){
 <?php
 include_once 'layouts/nav.php'
 ?>
+<!--modal de eliminar usuarios-->
+<div class="modal fade" id="confirmar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Confirmar</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="text-center">
+            <img id="avatar3" src="../img/avatar.png" class="profile-user-img img-fluid img-circle">
+        </div>
+        <div class="text-center">
+            <b>
+                <?php
+                    echo $_SESSION['nombre_us'];
+                ?>
+            </b>
+        </div>
+        <span>Ingrese su contraseña</span>
+        <!--<div class="card-body"> -->
+            <div class="alert alert-success text-center" id="confirmado" style='display:none;'>
+                <span><i class="fas fa-check m-1"></i>Usuario modificado</span>
+            </div>
+            <div class="alert alert-danger text-center" id="rechazado" style='display:none;'>
+                <span><i class="fas fa-times m-1"></i>La contraseña que ingresaste es incorrecta</span>
+            </div>
+        <!-- </div> -->
+        <form id="form-confirmar">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-unlock-alt"></i></span>
+                </div>
+                <input id="oldpass" type="password" class="form-control" placeholder="Ingrese contraseña actual">
+                <input type="hidden" id="id_user">
+                <input type="hidden" id="funcion">
+            </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="submit" class="btn bg-gradient-primary">Confirmar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 <!--segundo modal-->
 <div class="modal fade" id="crearusuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">

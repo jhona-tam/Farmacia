@@ -145,7 +145,7 @@ include_once 'layouts/nav.php'
                                     </li>
                                     <li class="list-group-item">
                                         <b style="color:#0b7300">Tipo Usuario</b>
-                                        <span id="us_tipo" class="float-right badge badge-primary">Administrador</span>
+                                        <span id="us_tipo" class="float-right">Administrador</span>
                                     </li>
                                     <button data-toggle="modal" data-target="#cambiocontra" type="button" class="btn btn-block btn-outline-warning btn-sm">Cambiar contraseña</button>
                                 </ul>
