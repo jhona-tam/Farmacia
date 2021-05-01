@@ -40,6 +40,7 @@ class Usuario{
             echo 'noupdate';
         }
     }
+    /**funcion para cambiar foto */
     function cambiar_photo($id_usuario,$nombre){
         $sql="SELECT avatar FROM usuario where id_usuario=:id";
         $query = $this->acceso->prepare($sql);    
@@ -52,6 +53,7 @@ class Usuario{
           return $this->objetos;
         
     }
+    /**funcion para buscar usuario */
     function buscar(){
         if(!empty($_POST['consulta'])){
             $consulta=$_POST['consulta'];
@@ -69,6 +71,7 @@ class Usuario{
             return $this->objetos;
         }
     }
+    /**funcion para crear un nuevo usuario */
     function crear($nombre,$apellido,$edad,$dni,$pass,$tipo,$avatar){
         $sql="SELECT id_usuario FROM usuario where dni_us=:dni";
         $query = $this->acceso->prepare($sql);
@@ -84,6 +87,7 @@ class Usuario{
             echo 'add';
         }
     }
+    /**funcion para descender un usario por modal*/
     function ascender($pass,$id_ascendido,$id_usuario){
         $sql="SELECT id_usuario FROM usuario where id_usuario=:id_usuario and contrasena_us=:pass";
         $query = $this->acceso->prepare($sql);
@@ -100,6 +104,7 @@ class Usuario{
             echo 'noascendido';
         }
     }
+    /**funcion para descender un usario por modal */
     function descender($pass,$id_descendido,$id_usuario){
         $sql="SELECT id_usuario FROM usuario where id_usuario=:id_usuario and contrasena_us=:pass";
         $query = $this->acceso->prepare($sql);

@@ -3,6 +3,7 @@ include_once '../modelo/Usuario.php';
 $usuario = new Usuario();
 session_start();
 $id_usuario= $_SESSION['usuario'];
+/**funcion para buscar usuario */
 if($_POST['funcion']=='buscar_usuario'){
     $json=array();
     $fecha_actual = new DateTime();
@@ -29,6 +30,7 @@ if($_POST['funcion']=='buscar_usuario'){
     $jsonstring = json_encode($json[0]);
     echo $jsonstring;
 }
+/**funcion para capturar datos y (edicion) */
 if($_POST['funcion']=='capturar_datos'){
     $json=array();
     $id_usuario=$_POST['id_usuario'];
@@ -45,6 +47,7 @@ if($_POST['funcion']=='capturar_datos'){
     $jsonstring = json_encode($json[0]);
     echo $jsonstring;
 }
+/**funcion para editar usuario */
 if($_POST['funcion']=='editar_usuario'){
     $id_usuario=$_POST['id_usuario'];
     $telefono=$_POST['telefono'];
@@ -61,6 +64,7 @@ if($_POST['funcion']=='cambiar_contra'){
     $newpass=$_POST['newpass'];
     $usuario->cambiar_contra($id_usuario,$oldpass,$newpass);
 }
+/**funcion para cambiar foto de usuario */
 if($_POST['funcion']=='cambiar_foto'){
     if(($_FILES['photo']['type']=='image/jpeg')||($_FILES['photo']['type']=='image/png')||($_FILES['photo']['type']=='image/gif')){
         $nombre=uniqid().'-'.$_FILES['photo']['name'];
@@ -87,6 +91,7 @@ if($_POST['funcion']=='cambiar_foto'){
         echo $jsonstring;
     }
 }
+/**funccion para buscar usuarios por nombre */
 if($_POST['funcion']=='buscar_usuarios_adm'){
     $json=array();
     $fecha_actual = new DateTime();
@@ -115,6 +120,7 @@ if($_POST['funcion']=='buscar_usuarios_adm'){
     $jsonstring = json_encode($json);
     echo $jsonstring;
 }
+/**funcion para crear nuevo usuario */
 if($_POST['funcion']=='crear_usuario'){
     $nombre = $_POST['nombre'];
     $apellido = $_POST['apellido'];
