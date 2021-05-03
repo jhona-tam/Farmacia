@@ -112,6 +112,7 @@ $(document).ready(function(){
         })
         e.preventDefault();
     })
+    /**funcion cambiar avatar */
     $('#form-photo').submit(e=>{
         let formData = new FormData($('#form-photo')[0]);
         $.ajax({

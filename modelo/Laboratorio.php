@@ -40,5 +40,18 @@ class Laboratorio{
             return $this->objetos;
         }
     }
+    /**funcion para cambiar logo de laboratorio */
+    function cambiar_logo($id,$nombre){
+        $sql="SELECT avatar FROM laboratorio where id_laboratorio=:id";
+        $query = $this->acceso->prepare($sql);    
+        $query->execute(array(':id'=>$id));
+        $this->objetos = $query->fetchall();
+
+            $sql="UPDATE laboratorio SET avatar=:nombre where id_laboratorio=:id";
+            $query=$this->acceso->prepare($sql);
+            $query->execute(array(':id'=>$id,':nombre'=>$nombre));
+          return $this->objetos;
+        
+    }
 }
 ?>
