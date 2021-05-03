@@ -151,8 +151,23 @@ include_once 'layouts/nav.php'
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="card-body"></div>
-                                        <div class="card-footer"></div>
+                                        <div class="card-body p-0">
+                                          <table class="table table-over text-nowrap">
+                                            <thead class="table-success">
+                                              <tr>
+                                                <th>Laboratorio</th>
+                                                <th>Logo</th>
+                                                <th>Accion</th>
+                                              </tr>
+                                            </thead>
+                                            <tbody class="table-active" id="laboratorios">
+                                            
+                                            </tbody>
+                                          </table>
+                                        </div>
+                                        <div class="card-footer">
+                                        
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="tab-pane" id='tipo'>
