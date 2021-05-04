@@ -51,4 +51,8 @@ if($_POST['funcion']=='cambiar_logo'){
         echo $jsonstring;
     }
 }
+if($_POST['funcion']=='borrar'){
+    $id=$_POST['id'];
+    $laboratorio->borrar($id);
+}
 ?>

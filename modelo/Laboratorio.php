@@ -53,5 +53,16 @@ class Laboratorio{
           return $this->objetos;
         
     }
+    /**funcion borrar laboratorio */
+    function borrar($id){
+        $sql="DELETE FROM laboratorio where Id_laboratorio=:id";
+        $query = $this->acceso->prepare($sql);            
+        if(!empty($query->execute(array(':id'=>$id)))){
+            echo 'borrado';
+        }
+        else{
+            echo 'no borrado';
+        }
+    }
 }
 ?>
