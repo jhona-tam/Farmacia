@@ -1,7 +1,9 @@
 <!-- Google Font: Source Sans Pro -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-    <!-- sweetalert2 -->
-    <link rel="stylesheet" href="../css/sweetalert2.css"> 
+  <!-- select2 -->
+  <link rel="stylesheet" href="../css/select2.css"> 
+  <!-- sweetalert2 -->
+  <link rel="stylesheet" href="../css/sweetalert2.css"> 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="../css/css/all.min.css">
   <!-- Theme style -->
@@ -81,6 +83,13 @@
             </a>
           </li>
           <li class="nav-header">ALMACEN</li>
+          <li class="nav-item">
+            <a href="adm_producto.php" class="nav-link">
+              <i class="nav-icon fas fa-pills"></i>
+              <p>
+                Gestion producto
+              </p>
+            </a>
           <li class="nav-item">
             <a href="adm_atributo.php" class="nav-link">
               <i class="nav-icon fas fa-warehouse"></i>

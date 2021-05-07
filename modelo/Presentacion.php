@@ -59,5 +59,13 @@ class Presentacion{
         $query ->execute(array(':id'=>$id_editado,':nombre'=>$nombre));
         echo 'edit';
     }
+     /**funcion rrellenar presentacion */
+     function rellenar_presentaciones(){
+        $sql="SELECT * FROM presentacion order by nombre asc";
+        $query = $this->acceso->prepare($sql);    
+        $query->execute();
+        $this->objetos = $query->fetchall();
+        return $this->objetos;
+    }
 }
 ?>

@@ -57,8 +57,23 @@ if($_POST['funcion']=='cambiar_logo'){
         echo $jsonstring;
     }
 }
+/**funcion eliminar lab */
 if($_POST['funcion']=='borrar'){
     $id=$_POST['id'];
     $laboratorio->borrar($id);
+}
+/**funcion rrellenar laboratorios */
+if($_POST['funcion']=='rellenar_laboratorios'){
+    $laboratorio->rellenar_laboratorios();
+    $json = array();
+    foreach ($laboratorio->objetos as $objeto) {
+        /**rellenando json */
+        $json[]=array(
+            'id'=>$objeto->id_laboratorio,
+            'nombre'=>$objeto->nombre  
+        );
+    }
+    $jsonstring=json_encode($json);
+    echo $jsonstring;
 }
 ?>

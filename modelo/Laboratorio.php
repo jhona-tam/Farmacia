@@ -65,11 +65,20 @@ class Laboratorio{
             echo 'no borrado';
         }
     }
+    /**edita lab */
     function editar($nombre,$id_editado){
         $sql="UPDATE laboratorio SET nombre=:nombre where id_laboratorio=:id";
         $query = $this->acceso->prepare($sql);  
         $query ->execute(array(':id'=>$id_editado,':nombre'=>$nombre));
         echo 'edit';
+    }
+    /**funcion rrellenar lab */
+    function rellenar_laboratorios(){
+        $sql="SELECT * FROM laboratorio order by nombre asc";
+        $query = $this->acceso->prepare($sql);    
+        $query->execute();
+        $this->objetos = $query->fetchall();
+        return $this->objetos;
     }
 }
 ?>
