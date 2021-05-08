@@ -24,7 +24,7 @@ include_once 'layouts/nav.php'
                 <span><i class="fas fa-check m-1"></i>El producto agrego correctamente</span>
               </div>
               <div class="alert alert-danger text-center" id="noadd" style='display:none;'>
-                <span><i class="fas fa-times m-1"></i>El producto ya existe en otro usuario</span>
+                <span><i class="fas fa-times m-1"></i>El producto ya existe</span>
               </div>
                 <form id="form-crear-producto">
                     <div class="form-group">
