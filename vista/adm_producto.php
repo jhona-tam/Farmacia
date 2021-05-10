@@ -95,7 +95,7 @@ include_once 'layouts/nav.php'
                     </div>
                 </div>
                 <div class="card-body">
-                    <div id="producto" class="row d-flex aling-items-stretch">
+                    <div id="productos" class="row d-flex aling-items-stretch">
 
                     </div>
                 </div>

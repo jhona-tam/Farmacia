@@ -74,11 +74,58 @@ $(document).ready(function(){
         });
         e.preventDefault();
     });
-    /**funcoin para buscar producto*/
+    /**funcion para buscar producto*/
     function buscar_producto(consulta){
         funcion="buscar";
         $.post('../controlador/ProductoController.php',{consulta,funcion},(response)=>{
-            console.log(response);
+            const productos = JSON.parse(response);
+            let template='';
+            productos.forEach(producto => {
+                template+=`
+                <div prodId="${producto.id}"prodStock="${producto.stock}"prodNombre="${producto.nombre}"prodPrecio="${producto.precio}"prodConcentracion="${producto.concentracion}"prodAdicional="${producto.adicional}"prodLaboratorio="${producto.laboratorio}"prodTipo="${producto.tipo}"prodPresentacion="${producto.presentacion}"prodAvatar="${producto.avatar}"  class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
+                <div class="card bg-light d-flex flex-fill">
+                <div class="card-header text-muted border-bottom-0">
+                    <i class="fas fa-lg fa-cubes mr-1"></i>${producto.stock}
+                </div>
+                <div class="card-body pt-0">
+                  <div class="row">
+                    <div class="col-7">
+                      <h2 class="lead"><b>${producto.nombre}</b></h2>
+                      <h4 class="lead"><b><i class="fas fa-lg fa-dollar-sign mr-1"></i>${producto.precio}</b></h4>            
+                      <ul class="ml-4 mb-0 fa-ul text-muted">
+                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-mortar-pestle"></i></span> Concentracion: ${producto.concentracion}</li>
+                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-prescription-bottle-alt"></i></span> Adicional: ${producto.adicional}</li>
+                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-flask"></i></span> Laboratorio: ${producto.laboratorio}</li>
+                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-copyright"></i></span> Tipo: ${producto.tipo}</li>
+                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-tablets"></i></span> Presentacion: ${producto.presentacion}</li>                
+                      </ul>
+                    </div>
+                    <div class="col-5 text-center">
+                      <img src="${producto.avatar}" alt="user-avatar" class="img-circle img-fluid">
+                    </div>
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <div class="text-right">
+                    <button class="avatar btn btn-sm bg-teal">
+                      <i class="fas fa-image"></i>
+                    </button>
+                    <button class="editar btn btn-sm btn-success">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="lote btn btn-sm btn-primary">
+                      <i class="fas fa-plus-circle"></i>
+                    </button>
+                    <button class="borrar btn btn-sm btn-danger">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+                `;
+            });
+            $('#productos').html(template);
         });
     }
     $(document).on('keyup','#buscar-producto',function(){
@@ -89,5 +136,12 @@ $(document).ready(function(){
         else{
             buscar_producto();
         }
+    });
+    $(document).on('click','.avatar',(e)=>{
+        funcion="cambiar_avatar";
+        const elemento = $(this)[0].activeElement.parentElement.parentElement.parentElement.parentElement;
+        const id = $(elemento).attr('prodId');
+        const avatar = $(elemento).attr('prodAvatar');
+        console.log(id+' '+avatar);
     });
 })

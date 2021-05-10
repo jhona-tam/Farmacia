@@ -41,7 +41,7 @@ class Producto{
             FROM producto
             JOIN laboratorio on prod_lab=id_laboratorio
             JOIN tipo_producto on prod_tip_prod=id_tip_prod
-            JOIN presentacion on prod_present=id_presentacion and producto.nombre not like '' limit 25";
+            JOIN presentacion on prod_present=id_presentacion and producto.nombre not like '' order by producto.nombre limit 25";
             $query = $this->acceso->prepare($sql);
             $query->execute();
             $this->objetos=$query->fetchall();
