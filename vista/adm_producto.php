@@ -8,6 +8,49 @@ if ($_SESSION['us_tipo']==1||$_SESSION['us_tipo']==3){
 <?php
 include_once 'layouts/nav.php'
 ?>
+<!-- modal cambiar foto de producto-->
+<!--cambie el id de cambiarlogo a cambiologo-->
+<div class="modal fade" id="cambiologo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Cambiar logo</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="text-center">
+            <img id="logoactual" src="../img/avatar.png" class="profile-user-img img-fluid img-circle">
+        </div>
+        <div class="text-center">
+            <b id="nombre_logo">
+            </b>
+        </div>
+        <div class="card-body">
+            <div class="alert alert-success text-center" id="edit" style='display:none;'>
+                <span><i class="fas fa-check m-1"></i>Se cambio el logo de laboratorio</span>
+            </div>
+            <div class="alert alert-danger text-center" id="noedit" style='display:none;'>
+                <span><i class="fas fa-times m-1"></i>Formato no soportado</span>
+            </div>
+        </div>
+        <form id="form-logo" enctype="multipart/form-data">
+            <div class="input-group mb-3 ml-5 mt-2">
+                <input type="file" name="photo" class="input-group">
+                <input type="hidden" name="funcion" id="funcion">
+                <input type="hidden" name="id_logo_prod" id="id_logo_prod">
+                <input type="hidden" name="avatar" id="avatar">
+            </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="submit" class="btn bg-gradient-primary">Guardar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 <!-- modal de un nuevo producto-->
 <div class="modal fade" id="crearproducto" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -26,6 +69,9 @@ include_once 'layouts/nav.php'
               <div class="alert alert-danger text-center" id="noadd" style='display:none;'>
                 <span><i class="fas fa-times m-1"></i>El producto ya existe</span>
               </div>
+              <div class="alert alert-success text-center" id="edit_prod" style='display:none;'>
+                <span><i class="fas fa-check m-1"></i>El producto se edito correctamente</span>
+              </div>              
                 <form id="form-crear-producto">
                     <div class="form-group">
                         <label for="nombre_producto">Nombre</label>
@@ -55,6 +101,7 @@ include_once 'layouts/nav.php'
                         <label for="presentacion">Presentacion</label>
                         <select name="presentacion" id="presentacion" class="form-control select2" style="width: 100%"></select>
                     </div>
+                    <input type="hidden" id="id_edit_prod">
             </div>
             <div class="card-footer">
                 <button type="submit" class="btn bg-gradient-primary float-right m-1">Guardar</button>
