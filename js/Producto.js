@@ -79,12 +79,19 @@ $(document).ready(function(){
                 $('#form-crear-producto').trigger('reset');
                 buscar_producto();
             }
-            else{
+            if(response=='noadd'){
                 $('#noadd').hide('slow');
                 $('#noadd').show(1000);
                 $('#noadd').hide(2000);
-                $('#form-crear-producto').trigger('reset');
+                $('#form-crear-producto').trigger('reset');    
             }
+            if(response=='noedit'){
+                $('#noadd').hide('slow');
+                $('#noadd').show(1000);
+                $('#noadd').hide(2000);
+                $('#form-crear-producto').trigger('reset');    
+            }
+            edit=false;
         });
         e.preventDefault();
     });
@@ -121,16 +128,16 @@ $(document).ready(function(){
                 </div>
                 <div class="card-footer">
                   <div class="text-right">
-                    <button class="avatar btn btn-sm bg-teal" type="button" data-toggle="modal" data-target="#cambiologo">
+                    <button class="avatar btn btn-sm bg-teal" type="button" data-toggle="modal" data-target="#cambiologo" title="Cambiar imagen de producto">
                       <i class="fas fa-image"></i>
                     </button>
-                    <button class="editar btn btn-sm btn-success" type="button" data-toggle="modal" data-target="#crearproducto">
+                    <button class="editar btn btn-sm btn-success" type="button" data-toggle="modal" data-target="#crearproducto" title="Editar detalles de producto">
                       <i class="fas fa-edit"></i>
                     </button>
-                    <button class="lote btn btn-sm btn-primary">
+                    <button class="lote btn btn-sm btn-primary" title="Agregar proveedor">
                       <i class="fas fa-plus-circle"></i>
                     </button>
-                    <button class="borrar btn btn-sm btn-danger">
+                    <button class="borrar btn btn-sm btn-danger" title="Borrar producto">
                       <i class="fas fa-trash"></i>
                     </button>
                   </div>
@@ -216,4 +223,60 @@ $(document).ready(function(){
         $('#presentacion').val(presentacion).trigger('change');
         edit=true;
     });
+    /**funcion eliminar producto*/
+    $(document).on('click','.borrar',(e)=>{
+        funcion="borrar";
+        const elemento = $(this)[0].activeElement.parentElement.parentElement.parentElement.parentElement;
+        const id = $(elemento).attr('prodId');
+        const nombre= $(elemento).attr('prodNombre');
+        const avatar= $(elemento).attr('prodAvatar');
+
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+            confirmButton: 'btn btn-success',
+            cancelButton: 'btn btn-danger mr-3'
+            },
+            buttonsStyling: false
+          })
+          
+          swalWithBootstrapButtons.fire({
+            title: 'Desea eliminar '+nombre+'?',
+            text: "No podras revertir esto",
+            imageUrl:''+avatar+'',
+            imageWidth: 100,
+            imageHeight: 100,
+            showCancelButton: true,
+            confirmButtonText: 'Si, eliminar!',
+            cancelButtonText: 'No, cancelar!',
+            reverseButtons: true
+          }).then((result) => {
+            if (result.isConfirmed) {
+                $.post('../controlador/ProductoController.php',{id,funcion},(response)=>{
+                    edit==false;
+                    if(response=='borrado'){
+                        swalWithBootstrapButtons.fire(
+                            'Eliminado!',
+                            'El producto '+nombre+' fue eliminado correctamente.',
+                            'success'
+                        )
+                        buscar_producto();
+                    }
+                    else{
+                        swalWithBootstrapButtons.fire(
+                            'No se puedo eliminar!',
+                            'El producto '+nombre+' no fue eliminado porque esta siendo usado en un lote.',
+                            'error'
+                        )
+                    }
+                })
+            } else if (
+              result.dismiss === Swal.DismissReason.cancel) {
+              swalWithBootstrapButtons.fire(
+                'Cancelado',
+                'El producto  '+nombre+' no fue eliminado',
+                'error'
+              )
+            }
+          })
+    })
 })
