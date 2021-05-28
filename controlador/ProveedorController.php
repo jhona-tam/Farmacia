@@ -21,7 +21,7 @@ if($_POST['funcion']=='buscar'){
             'nombre'=>$objeto->nombre,
             'telefono'=>$objeto->telefono,
             'correo'=>$objeto->correo,
-            'dirrecion'=>$objeto->direccion,
+            'direccion'=>$objeto->direccion,
             'avatar'=>'../img/prov/'.$objeto->avatar
         );
     }

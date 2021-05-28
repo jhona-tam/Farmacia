@@ -9,7 +9,7 @@ if ($_SESSION['us_tipo']==1||$_SESSION['us_tipo']=3) {
 include_once 'layouts/nav.php'
 ?>
 <!-- modal de cambiar foto de laboratorio -->
-<div class="modal fade" id="cambiarlogo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="cambiologo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
