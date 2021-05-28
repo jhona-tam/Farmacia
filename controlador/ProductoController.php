@@ -49,6 +49,7 @@ if($_POST['funcion']=='buscar'){
     $jsonstring = json_encode($json);
     echo $jsonstring;
 }
+/**funcion cambiar avatar de producto */
 if($_POST['funcion']=='cambiar_avatar'){
     $id=$_POST['id_logo_prod'];
     $avatar=$_POST['avatar']; 

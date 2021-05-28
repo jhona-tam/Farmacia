@@ -39,6 +39,7 @@ include_once 'layouts/nav.php'
                 <input type="file" name="photo" class="input-group">
                 <input type="hidden" name="funcion" id="funcion">
                 <input type="hidden" name="id_logo_prov" id="id_logo_prov">
+                <input type="hidden" name="avatar" id="avatar">
             </div>
       </div>
       <div class="modal-footer">

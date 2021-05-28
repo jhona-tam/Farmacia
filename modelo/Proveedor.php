@@ -40,5 +40,23 @@ class Proveedor{
             return $this->objetos;
         }
     }
+    /**funcion cambiar imagen de proveedor */
+    function cambiar_logo($id,$nombre){
+        $sql="UPDATE proveedor SET avatar=:nombre where id_proveedor=:id";
+        $query=$this->acceso->prepare($sql);
+        $query->execute(array(':id'=>$id,':nombre'=>$nombre));
+    }
+    /**funcion eliminar proveedor */
+    function borrar($id){
+        $sql="DELETE FROM proveedor where id_proveedor=:id";
+        $query=$this->acceso->prepare($sql);
+        $query->execute(array(':id'=>$id));
+        if (!empty($query->execute(array(':id'=>$id)))){
+            echo 'borrado';
+        }
+        else{
+            echo 'noborrado';
+        }
+    }
 }
 ?>

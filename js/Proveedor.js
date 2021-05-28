@@ -73,6 +73,7 @@ $(document).ready(function(){
             $('#proveedores').html(template);
         });
     }
+    /**buscar proveedor */
     $(document).on('keyup','#buscar_proveedor',function() {
         let valor=$(this).val();
         if (valor!=''){
@@ -82,6 +83,7 @@ $(document).ready(function(){
             buscar_prov();
         }
     });
+    /**cambiar logo de proveedor */
     $(document).on('click','.avatar',(e)=>{
         funcion="cambiar_logo";
         const elemento = $(this)[0].activeElement.parentElement.parentElement.parentElement.parentElement;
@@ -92,5 +94,89 @@ $(document).ready(function(){
         $('#nombre_logo').html(nombre);
         $('#id_logo_prov').val(id);
         $('#funcion').val(funcion);
+        $('#avatar').val(avatar);
     });
+    $('#form-logo').submit(e=>{
+      let formData = new FormData($('#form-logo')[0]);
+      $.ajax({
+          url:'../controlador/ProveedorController.php',
+          type:'POST',
+          data:formData,
+          cache:false,
+          processData: false,
+          contentType: false
+      }).done(function(response){
+          const json = JSON.parse(response);
+          if (json.alert=='edit') {
+              $('#logoactual').attr('src',json.ruta);
+              $('#edit-prov').hide('slow');
+              $('#edit-prov').show(1000);
+              $('#edit-prov').hide(2000);
+              $('#form-logo').trigger('reset');
+              buscar_prov();
+          }
+          else{
+              $('#noedit-prov').hide('slow');
+              $('#noedit-prov').show(1000);
+              $('#noedit-prov').hide(2000);
+              $('#form-logo').trigger('reset');
+          }
+      });
+      e.preventDefault();
+  });
+  /**evento eliminar proveedor */
+  $(document).on('click','.borrar',(e)=>{
+    funcion="borrar";
+    const elemento = $(this)[0].activeElement.parentElement.parentElement.parentElement.parentElement;
+    const id = $(elemento).attr('provId');
+    const nombre= $(elemento).attr('provNombre');
+    const avatar= $(elemento).attr('provAvatar');
+
+    const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+        confirmButton: 'btn btn-success',
+        cancelButton: 'btn btn-danger mr-3'
+        },
+        buttonsStyling: false
+      })
+      
+      swalWithBootstrapButtons.fire({
+        title: 'Desea eliminar '+nombre+'?',
+        text: "No podras revertir esto",
+        imageUrl:''+avatar+'',
+        imageWidth: 100,
+        imageHeight: 100,
+        showCancelButton: true,
+        confirmButtonText: 'Si, eliminar!',
+        cancelButtonText: 'No, cancelar!',
+        reverseButtons: true
+      }).then((result) => {
+        if (result.isConfirmed) {
+            $.post('../controlador/ProveedorController.php',{id,funcion},(response)=>{
+                if(response=='borrado'){
+                    swalWithBootstrapButtons.fire(
+                        'Eliminado!',
+                        'El proveedor '+nombre+' fue eliminado correctamente.',
+                        'success'
+                    )
+                    buscar_prov();
+                }
+                else{
+                    swalWithBootstrapButtons.fire(
+                        'No se puedo eliminar!',
+                        'El proveedor '+nombre+' no fue eliminado porque esta siendo usado en un lote.',
+                        'error'
+                    )
+                }
+            })
+        } else if (
+          result.dismiss === Swal.DismissReason.cancel) {
+          swalWithBootstrapButtons.fire(
+            'Cancelado',
+            'El proveedor  '+nombre+' no fue eliminado',
+            'error'
+          )
+        }
+      })
+})
 });
