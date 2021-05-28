@@ -1,27 +1,44 @@
 $(document).ready(function(){
+    var edit=false;
     var funcion;
     buscar_prov();
     /**crear proveedor */
     $('#form-crear').submit(e=>{
+        let id = $('#id_edit_prov').val();
         let nombre = $('#nombre').val();
         let telefono = $('#telefono').val();
         let correo = $('#correo').val();
         let direccion = $('#direccion').val();
-        funcion='crear';
-        $.post('../controlador/ProveedorController.php',{nombre,telefono,correo,direccion,funcion},(response)=>{
+        if (edit==true) {
+          funcion="editar"
+        }
+        else{
+          funcion='crear';
+        }        
+        $.post('../controlador/ProveedorController.php',{id,nombre,telefono,correo,direccion,funcion},(response)=>{
+          console.log(response);
             /**alertas del modal de crear proveedor */
             if (response=='add') {
                 $('#add-prov').hide('slow');
                 $('#add-prov').show(1000);
                 $('#add-prov').hide(2000);
                 $('#form-crear').trigger('reset');
+                buscar_prov();
             }
-            if (response=='noadd') {
+            if (response=='noadd' || response=='noedit') {
                 $('#noadd-prov').hide('slow');
                 $('#noadd-prov').show(1000);
                 $('#noadd-prov').hide(2000);
                 $('#form-crear').trigger('reset');
             }
+            if (response=='edit') {
+                $('#edit-prove').hide('slow');
+                $('#edit-prove').show(1000);
+                $('#edit-prove').hide(2000);
+                $('#form-crear').trigger('reset');
+                buscar_prov();
+          }
+            edit=false;
         });
         e.preventDefault();
     });
@@ -58,7 +75,7 @@ $(document).ready(function(){
                     <button class="avatar btn btn-sm btn-info" title="Cambiar imagen de proveedor" type="button" data-toggle="modal" data-target="#cambiologo">
                       <i class="fas fa-image"></i>
                     </button>
-                    <button class="editar btn btn-sm btn-success" title="Editar proveedor">
+                    <button class="editar btn btn-sm btn-success" title="Editar proveedor" type="button" data-toggle="modal" data-target="#crearproveedor">
                       <i class="fas fa-edit"></i>
                     </button>  
                     <button class="borrar btn btn-sm btn-danger" title="Eliminar proveedor">
@@ -96,6 +113,21 @@ $(document).ready(function(){
         $('#funcion').val(funcion);
         $('#avatar').val(avatar);
     });
+    /**editar proveedor */
+    $(document).on('click','.editar',(e)=>{
+      const elemento = $(this)[0].activeElement.parentElement.parentElement.parentElement.parentElement;
+      const id= $(elemento).attr('provId');
+      const nombre= $(elemento).attr('provNombre');
+      const direccion= $(elemento).attr('provDireccion');
+      const telefono= $(elemento).attr('provTelefono');
+      const correo= $(elemento).attr('provCorreo');
+      $('#id_edit_prov').val(id);
+      $('#nombre').val(nombre);
+      $('#direccion').val(direccion);
+      $('#telefono').val(telefono);
+      $('#correo').val(correo);
+      edit=true;
+  });
     $('#form-logo').submit(e=>{
       let formData = new FormData($('#form-logo')[0]);
       $.ajax({

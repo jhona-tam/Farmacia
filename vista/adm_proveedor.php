@@ -68,6 +68,9 @@ include_once 'layouts/nav.php'
               <div class="alert alert-danger text-center" id="noadd-prov" style='display:none;'>
                 <span><i class="fas fa-times m-1"></i>El proveedor ya existe</span>
               </div>
+              <div class="alert alert-success text-center" id="edit-prove" style='display:none;'>
+                <span><i class="fas fa-check m-1"></i>Se edito correctamente</span>
+              </div>
                 <form id="form-crear">
                     <div class="form-group">
                         <label for="nombre">Nombres</label>
