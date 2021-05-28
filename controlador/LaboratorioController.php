@@ -13,7 +13,7 @@ if($_POST['funcion']=='editar'){
     $id_editado=$_POST['id_editado'];
     $laboratorio->editar($nombre,$id_editado);
 }
-/**funcion buscar */
+/**funcion buscar laboratorio */
 if($_POST['funcion']=='buscar'){
     $laboratorio->buscar();
     $json=array();

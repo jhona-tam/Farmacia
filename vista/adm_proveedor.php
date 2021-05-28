@@ -20,11 +20,11 @@ include_once 'layouts/nav.php'
                 </button>
             </div>
             <div class="card-body">
-              <div class="alert alert-success text-center" id="add" style='display:none;'>
+              <div class="alert alert-success text-center" id="add-prov" style='display:none;'>
                 <span><i class="fas fa-check m-1"></i>Se agrego correctamente</span>
               </div>
-              <div class="alert alert-danger text-center" id="noadd" style='display:none;'>
-                <span><i class="fas fa-times m-1"></i>El proveedor ya existe en otro usuario</span>
+              <div class="alert alert-danger text-center" id="noadd-prov" style='display:none;'>
+                <span><i class="fas fa-times m-1"></i>El proveedor ya existe</span>
               </div>
                 <form id="form-crear">
                     <div class="form-group">
