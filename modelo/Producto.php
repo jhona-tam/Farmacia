@@ -82,5 +82,13 @@ class Producto{
             echo 'no borrado';
         }
     }
+    /**funcion de obtener stock con conteo */
+    function obtener_stock($id){
+        $sql="SELECT SUM(stock) as total FROM lote where lote_id_prod=:id";
+        $query=$this->acceso->prepare($sql);
+        $query->execute(array(':id'=>$id));
+        $this->objetos=$query->fetchall();
+        return $this->objetos;
+    }
 }
 ?>

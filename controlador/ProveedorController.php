@@ -70,6 +70,19 @@ if($_POST['funcion']=='cambiar_logo'){
 if($_POST['funcion']=='borrar'){
     $id=$_POST['id'];
     $proveedor->borrar($id);
-
+}
+/**funcion rrellenar proveedores a productos */
+if($_POST['funcion']=='rellenar_proveedores'){
+    $proveedor->rellenar_proveedores();
+    $json = array();
+    foreach ($proveedor->objetos as $objeto) {
+        /**rellenando json */
+        $json[]=array(
+            'id'=>$objeto->id_proveedor,
+            'nombre'=>$objeto->nombre  
+        );
+    }
+    $jsonstring=json_encode($json);
+    echo $jsonstring;
 }
 ?>

@@ -8,6 +8,50 @@ if ($_SESSION['us_tipo']==1||$_SESSION['us_tipo']==3){
 <?php
 include_once 'layouts/nav.php'
 ?>
+<!-- modal de agregar producto a un proveedor-->
+<div class="modal fade" id="crearlote" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="card card-success">
+            <div class="card-header">
+                <h3 class="card-title">Crear lote</h3>
+                <button data-dismiss="modal" aria-label="close" class="close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="card-body">
+              <div class="alert alert-success text-center" id="add-lote" style='display:none;'>
+                <span><i class="fas fa-check m-1"></i>Se agrego correctamente</span>
+              </div>           
+                <form id="form-crear-lote">
+                    <div class="form-group">
+                        <label for="nombre_producto_lote">Producto: </label>
+                        <label id="nombre_producto_lote">Nombre de producto</label>
+                    </div>
+                    <div class="form-group">
+                        <label for="proveedor">Proveedor: </label>
+                        <select name="presentacion" id="proveedor" class="form-control select2" style="width: 100%"></select>
+                    </div>
+                    <div class="form-group">
+                        <label for="stock">Stock: </label>
+                        <input id="stock" type="number" class="form-control" placeholder="Ingrese stock">
+                    </div>
+                    <div class="form-group">
+                        <label for="vencimiento">Vencimiento: </label>
+                        <input id="vencimiento" type="date" class="form-control" placeholder="Ingrese fecha de venciomiento">
+                    </div>      
+                    <!--era id_lote_prov-->      
+                    <input type="hidden" id="id_lote_prod">
+            </div>
+            <div class="card-footer">
+                <button type="submit" class="btn bg-gradient-primary float-right m-1">Guardar</button>
+                <button type="button" data-dismiss="modal" class="btn btn-outline-secondary float-right m-1">Close</button>
+                </form>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
 <!-- modal cambiar foto de producto-->
 <!--cambie el id de cambiarlogo a cambiologo-->
 <div class="modal fade" id="cambiologo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

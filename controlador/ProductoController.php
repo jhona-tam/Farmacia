@@ -30,13 +30,19 @@ if($_POST['funcion']=='buscar'){
     $producto->buscar();
     $json=array();
     foreach ($producto->objetos as $objeto) {
+        /**suma la cantidad de productos de stock a la bd */
+        $producto->obtener_stock($objeto->id_producto);
+        foreach ($producto->objetos as $obj) {
+            $total = $obj->total;
+        }
+        /**hasta qui */
         $json[]=array(
             'id'=>$objeto->id_producto,
             'nombre'=>$objeto->nombre,
             'concentracion'=>$objeto->concentracion,
             'adicional'=>$objeto->adicional,
             'precio'=>$objeto->precio,
-            'stock'=>'stock',
+            'stock'=>$total,
             'laboratorio'=>$objeto->laboratorio,
             'tipo'=>$objeto->tipo,
             'presentacion'=>$objeto->presentacion,
