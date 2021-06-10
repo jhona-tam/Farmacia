@@ -9,6 +9,12 @@ if ($_POST['funcion']=='crear') {
     $vencimiento = $_POST['vencimiento'];
     $lote->crear($id_producto,$proveedor,$stock,$vencimiento);
 }
+/**editar lote */
+if ($_POST['funcion']=='editar') {
+    $id_lote = $_POST['id'];
+    $stock = $_POST['stock'];
+    $lote->editar($id_lote,$stock);
+}
 /**funcion buscar lote */
 if ($_POST['funcion']=='buscar') {
     $lote->buscar();
@@ -52,5 +58,10 @@ if ($_POST['funcion']=='buscar') {
     }
     $jsonstring = json_encode($json);
     echo $jsonstring;
+}
+/**funcion eliminar lote */
+if ($_POST['funcion']=='borrar') {
+    $id=$_POST['id'];
+    $lote->borrar($id);
 }
 ?>
