@@ -1,5 +1,6 @@
 <!-- Google Font: Source Sans Pro -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+<link rel="stylesheet" href="../css/main.css">
   <!-- select2 -->
   <link rel="stylesheet" href="../css/select2.css"> 
   <!-- sweetalert2 -->
@@ -31,7 +32,7 @@
             
           </img>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <table class="table table-hover text-nowrap p-0">
+            <table class="carro table table-hover text-nowrap p-0">
               <thead class="table success">
                 <tr>
                   <th>Codigo</th>
@@ -47,7 +48,7 @@
               </tbody>
             </table>
             <a href="#" class="btn btn-danger btn-block">Procesar compra</a>
-            <a href="#" class="btn btn-primary btn-block">Vaciar carrito</a>
+            <a href="#" id="vaciar-carrito" class="btn btn-primary btn-block">Vaciar carrito</a>
           </div>
         </li> 
     </ul>
