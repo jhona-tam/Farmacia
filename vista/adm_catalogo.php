@@ -88,3 +88,4 @@ else{
 }
 ?>
 <script src="../js/Catalogo.js"></script>
+<script src="../js/Carrito.js"></script>

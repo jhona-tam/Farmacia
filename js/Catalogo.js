@@ -1,4 +1,5 @@
 $(document).ready(function() {
+    $('#cat-carrito').show();
     buscar_producto();
     mostrar_lotes_riesgo();
     /**funcion buscar producto en catalofo */
@@ -17,6 +18,7 @@ $(document).ready(function() {
                 <div class="card-body pt-0">
                   <div class="row">
                     <div class="col-7">
+                      <h2 class="lead"><b>Codigo${producto.id}</b></h2>
                       <h2 class="lead"><b>${producto.nombre}</b></h2>
                       <h4 class="lead"><b><i class="fas fa-lg fa-dollar-sign mr-1"></i>${producto.precio}</b></h4>            
                       <ul class="ml-4 mb-0 fa-ul text-muted">
@@ -34,7 +36,7 @@ $(document).ready(function() {
                 </div>
                 <div class="card-footer">
                   <div class="text-right">                    
-                    <button class="lote btn btn-sm btn-primary" type="button" data-toggle="modal" data-target="#crearlote">
+                    <button class="agregar-carrito btn btn-sm btn-primary">
                       <i class="fas fa-shopping-cart"></i> Agregar al carrito
                     </button>                    
                   </div>

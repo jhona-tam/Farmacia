@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="../css/css/all.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../css/adminlte.min.css">
+  
 </head>
 <body class="hold-transition sidebar-mini">
 <!-- Site wrapper -->
@@ -25,6 +26,30 @@
       <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link">Contact</a>
       </li>
+      <li class="nav-item dropdown" id="cat-carrito" style="display:none">
+          <img src="../img/carrito.png" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true">
+            
+          </img>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <table class="table table-hover text-nowrap p-0">
+              <thead class="table success">
+                <tr>
+                  <th>Codigo</th>
+                  <th>Nombre</th>
+                  <th>Concentracion</th>
+                  <th>Adicional</th>
+                  <th>Precio</th>
+                  <th>Eliminar</th>
+                </tr>
+              </thead>
+              <tbody id="lista">
+
+              </tbody>
+            </table>
+            <a href="#" class="btn btn-danger btn-block">Procesar compra</a>
+            <a href="#" class="btn btn-primary btn-block">Vaciar carrito</a>
+          </div>
+        </li> 
     </ul>
 
     <!-- Right navbar links -->
