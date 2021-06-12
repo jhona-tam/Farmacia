@@ -1,5 +1,6 @@
 $(document).ready(function(){
 Contar_productos();
+RecuperarLS_carrito_compra();
 RecuperarLS_carrito();
 
 	/**funcion agregar carrito */
@@ -14,6 +15,7 @@ RecuperarLS_carrito();
         const tipo=$(elemento).attr('prodTipo');
         const presentacion=$(elemento).attr('prodPresentacion');
         const avatar=$(elemento).attr('prodAvatar');
+        const stock=$(elemento).attr('prodStock');
 
         const producto={
             id: id,
@@ -25,6 +27,7 @@ RecuperarLS_carrito();
             tipo: tipo,
             presentacion: presentacion,
             avatar: avatar,
+			stock: stock,
             cantidad:1
         }
 				let id_producto;
@@ -73,6 +76,10 @@ RecuperarLS_carrito();
 		EliminarLS();
 		Contar_productos();		
     })
+	/** funcion procesar pedido**/
+	$(document).on('click','#procesar-pedido',(e)=>{
+		Procesar_pedido();
+	});
 		/**funcion de recuperar con local storage los productos cuando actualizamos */
 		function RecuperarLS() {
 			let productos;
@@ -134,4 +141,59 @@ RecuperarLS_carrito();
 			});
 			$('#contador').html(contador);
 		}
+		function Procesar_pedido(){
+			let productos; 
+			productos= RecuperarLS();
+			if(productos.length === 0){
+				Swal.fire({
+					icon: 'error',
+					title: 'Oops...',
+					text: 'El carrito esta vacio',
+				})
+			}
+			else{
+				location.href = '../vista/adm_compra.php';
+			}
+		}
+		/**funcion detalle de compra */
+		function RecuperarLS_carrito_compra(){
+			let productos;
+			productos = RecuperarLS();
+			productos.forEach(producto => {
+				template=`
+            <tr prodId="${producto.id}">                
+                <td>${producto.nombre}</td>
+                <td>${producto.stock}</td>
+				<td>${producto.precio}</td>
+                <td>${producto.concentracion}</td>
+                <td>${producto.adicional}</td>
+                <td>${producto.laboratorio}</td>
+                <td>${producto.presentacion}</td>
+                <td>
+					<input type="number" min="1" class="form-control cantidad_producto" value="${producto.cantidad}">
+				</td>
+				<td class="subtotales">
+			<h5>${producto.precio*producto.cantidad}</h5>
+				</td>
+                <td><button class="borrar-producto btn btn-danger"><i class="fas fa-times-circle"></i></button></td>
+            </tr>
+        `;
+        $('#lista-compra').append(template);
+			});
+		}
+		$('#cp').keyup((e)=>{
+			let id,cantidad,producto,productos,monto;
+			producto = $(this)[0].activeElement.parentElement.parentElement;
+			id = $(producto).attr('prodId');
+			cantidad = producto.querySelector('input').value;
+			montos = document.querySelectorAll('.subtotales');
+			productos = RecuperarLS();
+			productos.forEach(function(prod,indice){
+				if (prod.id === id) {
+					prod.cantidad = cantidad;
+					montos[indice].innerHTML = `<j5>${cantidad*productos[indice].precio}</h5>`;
+				}			
+			});
+			localStorage.setItem('productos',JSON.stringify(productos));
+		})
 })

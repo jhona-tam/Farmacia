@@ -1,14 +1,15 @@
 <!-- Google Font: Source Sans Pro -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-<link rel="stylesheet" href="../css/main.css">
-  <!-- select2 -->
-  <link rel="stylesheet" href="../css/select2.css"> 
-  <!-- sweetalert2 -->
-  <link rel="stylesheet" href="../css/sweetalert2.css"> 
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="../css/css/all.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="../css/adminlte.min.css">
+<link rel="stylesheet" href="../css/compra.css">
+<link rel="stylesheet" href="../css/main.css">  
+ <!-- select2 -->
+<link rel="stylesheet" href="../css/select2.css"> 
+<!-- sweetalert2 -->
+<link rel="stylesheet" href="../css/sweetalert2.css"> 
+<!-- Font Awesome -->
+<link rel="stylesheet" href="../css/css/all.min.css">
+<!-- Theme style -->
+<link rel="stylesheet" href="../css/adminlte.min.css">
   
 </head>
 <body class="hold-transition sidebar-mini">
@@ -47,7 +48,7 @@
 
               </tbody>
             </table>
-            <a href="#" class="btn btn-danger btn-block">Procesar compra</a>
+            <a href="#" id="procesar-pedido" class="btn btn-danger btn-block">Procesar compra</a>
             <a href="#" id="vaciar-carrito" class="btn btn-primary btn-block">Vaciar carrito</a>
           </div>
         </li> 
