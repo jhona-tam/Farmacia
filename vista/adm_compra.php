@@ -39,7 +39,7 @@ include_once 'layouts/nav.php'
                             <div class="logo_cp">
                                 <img src="../img/logo.svg" width="100" height="100">
                             </div>
-                            <h1 class="titulo_cp">Solicitud de compra <i class="fas fa-sign-out-alt"></i></h1>
+                            <h1 class="titulo_cp">Procesar compra <i class="fas fa-sign-out-alt"></i></h1>
                             <div class="datos_cp">
                                 <div class="form-group row">
                                     <span>Cliente: </span>
@@ -58,7 +58,7 @@ include_once 'layouts/nav.php'
                                     <h3>usuario</h3>
                                 </div>
                             </div>
-                        </header>
+                        </header>                        
                         <button id="actualizar"class="btn btn-success">Actualizar</button>
                         <div id="cp"class="card-body p-0">
                             <table class="compra table table-hover text-nowrap">
@@ -94,14 +94,14 @@ include_once 'layouts/nav.php'
                                                 <span class="info-box-icon"><i class="fas fa-tag"></i></span>
                                                 <div class="info-box-content">
                                                     <span class="info-box-text text-left ">SUB TOTAL</span>
-                                                    <span class="info-box-number" id="subtotal">10</span>
+                                                    <span class="info-box-number" id="subtotal" id="subtotal">10</span>
                                                 </div>
                                             </div>
                                             <div class="info-box mb-3 bg-warning">
                                                 <span class="info-box-icon"><i class="fas fa-tag"></i></span>
                                                 <div class="info-box-content">
                                                     <span class="info-box-text text-left ">IGV</span>
-                                                    <span class="info-box-number"id="con_igv">2</span>
+                                                    <span class="info-box-number"id="con_igv" id="con_igv">2</span>
                                                 </div>
                                             </div>
                                             <div class="info-box mb-3 bg-info">
@@ -153,8 +153,7 @@ include_once 'layouts/nav.php'
                                             <span class="info-box-icon"><i class="fas fa-money-bill-alt"></i></span>
                                             <div class="info-box-content">
                                                 <span class="info-box-text text-left ">INGRESO</span>
-                                                <input type="number" id="pago" min="1" placeholder="Ingresa Dinero" class="form-control">
-                                               
+                                                <input type="number" id="pago" min="1" placeholder="Ingresa Dinero" class="form-control">                                               
                                                 </div>
                                             </div>
                                             <div class="info-box mb-3 bg-info">
