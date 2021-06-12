@@ -1,4 +1,5 @@
 $(document).ready(function(){
+Contar_productos();
 RecuperarLS_carrito();
 
 	/**funcion agregar carrito */
@@ -54,6 +55,8 @@ RecuperarLS_carrito();
 			`;
 			$('#lista').append(template);
 			AgregarLS(producto);
+			let contador;			
+			Contar_productos();			
 			}        
     })
 		/**borrar prodcuto de carrito */
@@ -61,12 +64,14 @@ RecuperarLS_carrito();
         const elemento = $(this)[0].activeElement.parentElement.parentElement;
 				const id = $(elemento).attr('prodId');
         elemento.remove();
-				Eliminar_producto_LS(id);
+		Eliminar_producto_LS(id);
+		Contar_productos();
     })
 		/**vaciar carrito */
     $(document).on('click','#vaciar-carrito',(e)=>{
         $('#lista').empty();
-				EliminarLS();
+		EliminarLS();
+		Contar_productos();		
     })
 		/**funcion de recuperar con local storage los productos cuando actualizamos */
 		function RecuperarLS() {
@@ -118,5 +123,15 @@ RecuperarLS_carrito();
 		/**elimanar local storage */
 		function EliminarLS(){
 			localStorage.clear();
+		}
+		/**funcion para el contador de productos en el carrito */
+		function Contar_productos(){
+			let producto;
+			let contador=0;
+			productos=RecuperarLS();
+			productos.forEach(producto => {
+				contador++;
+			});
+			$('#contador').html(contador);
 		}
 })
