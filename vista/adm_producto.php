@@ -131,7 +131,7 @@ include_once 'layouts/nav.php'
                     </div>
                     <div class="form-group">
                         <label for="precio">Precio</label>
-                        <input id="precio" type="number" class="form-control" value='1' placeholder="Ingrese precio de producto" required>
+                        <input id="precio" type="number" step="any" class="form-control" value='1' placeholder="Ingrese precio de producto" required>
                     </div>
                     <div class="form-group">
                         <label for="laboratorio">Laboratorio</label>
