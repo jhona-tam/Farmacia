@@ -82,6 +82,10 @@ RecuperarLS_carrito();
 	$(document).on('click','#procesar-pedido',(e)=>{
 		Procesar_pedido();
 	});
+	/**funcion procesar compra */
+	$(document).on('click','#procesar-compra',(e)=>{
+		Procesar_compra();
+	});
 		/**funcion de recuperar con local storage los productos cuando actualizamos */
 		function RecuperarLS() {
 			let productos;
@@ -249,5 +253,58 @@ RecuperarLS_carrito();
 			$('#total_sin_descuento').html(total_sin_descuento);
 			$('#total').html(total.toFixed(2));
 			$('#vuelto').html(vuelto.toFixed(2));
+		}
+		function Procesar_compra() {
+			let nombre,dni;
+			nombre=$('#cliente').val();
+			dni=$('#dni').val();
+			if(RecuperarLS().length == 0){
+				Swal.fire({
+					icon: 'error',
+					title: 'Oops...',
+					text: 'No hay productos, selecione algunos',
+				}).then(function() {
+					location.href = '../vista/adm_catalogo.php'
+				})
+			}
+			else if (nombre=='') {
+				Swal.fire({
+					icon: 'error',
+					title: 'Oops...',
+					text: 'Ingrese nombre de cliente',
+				})
+			}
+			else {
+				Verificar_stock().then(error=>{
+					if (error==0) {
+						Swal.fire({
+							position: 'center',
+							icon: 'success',
+							title: 'Se realizo la compra',
+							showConfirmButton: false,
+							timer: 1500
+						})	
+					}
+					else {
+						Swal.fire({
+							icon: 'error',
+							title: 'Oops...',
+							text: 'Hay conflicto en el stock de algun producto',
+						})
+					}
+				});				
+			}
+		}
+		async	function Verificar_stock() {
+			let productos;
+			funcion='verificar_stock';
+			productos=RecuperarLS();
+			const response = await fetch('../controlador/ProductoController.php',{
+				method:'POST',
+				headers:{'Content-Type':'application/x-www-form-urlencoded'},
+				body:'funcion='+funcion+'&&productos='+JSON.stringify(productos)
+			})
+			let error = await response.text();
+			return error;
 		}
 })

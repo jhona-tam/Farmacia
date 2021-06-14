@@ -39,7 +39,7 @@ include_once 'layouts/nav.php'
                             <div class="logo_cp">
                                 <img src="../img/logo.svg" width="100" height="100">
                             </div>
-                            <h1 class="titulo_cp">Procesar compra <i class="fas fa-sign-out-alt"></i></h1>
+                            <h1 class="titulo_cp">Procesar venta <i class="fas fa-sign-out-alt"></i></h1>
                             <div class="datos_cp">
                                 <div class="form-group row">
                                     <span>Cliente: </span>
@@ -59,7 +59,7 @@ include_once 'layouts/nav.php'
                                 </div>
                             </div>
                         </header>                        
-                        <button id="actualizar"class="btn btn-success">Actualizar</button>
+                        <button id="actualizar"class="btn btn-outline-dark">Actualizar</button>
                         <div id="cp"class="card-body p-0">
                             <table class="compra table table-hover text-nowrap">
                                 <thead class='table-success'>

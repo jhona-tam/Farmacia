@@ -120,4 +120,22 @@ if($_POST['funcion']=='buscar_id'){
     $jsonstring = json_encode($json[0]);
     echo $jsonstring;
 }
+/**funcion conteo de stock y proceso compra */
+if($_POST['funcion']=='verificar_stock'){
+    $error=0;
+    $productos=json_decode($_POST['productos']);
+    foreach ($productos as $objeto) {
+        $producto->obtener_stock($objeto->id);
+        foreach ($producto->objetos as $obj) {
+            $total=$obj->total;
+        }
+        if ($total>=$objeto->cantidad && $objeto->cantidad>0) {
+            $error=$error+0;
+        }
+        else {
+            $error=$error+1;
+        }
+    }
+    echo $error;
+}
 ?>
