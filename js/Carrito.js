@@ -284,12 +284,11 @@ RecuperarLS_carrito();
 							icon: 'success',
 							title: 'Se realizo la compra',
 							showConfirmButton: false,
-							timer: 1500
-							.then(function() {
-								EliminarLS();
-								location.href = '../vista/adm_catalogo.php'
-							})
-						})	
+							timer: 1500							
+						}).then(function() {
+							EliminarLS();
+							location.href = '../vista/adm_catalogo.php'
+						})
 					}
 					else {
 						Swal.fire({
