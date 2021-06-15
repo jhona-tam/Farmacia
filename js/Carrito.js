@@ -254,6 +254,7 @@ RecuperarLS_carrito();
 			$('#total').html(total.toFixed(2));
 			$('#vuelto').html(vuelto.toFixed(2));
 		}
+		/**funcion procesar compra */
 		function Procesar_compra() {
 			let nombre,dni;
 			nombre=$('#cliente').val();
@@ -277,12 +278,17 @@ RecuperarLS_carrito();
 			else {
 				Verificar_stock().then(error=>{
 					if (error==0) {
+						Registrar_compra(nombre,dni);
 						Swal.fire({
 							position: 'center',
 							icon: 'success',
 							title: 'Se realizo la compra',
 							showConfirmButton: false,
 							timer: 1500
+							.then(function() {
+								EliminarLS();
+								location.href = '../vista/adm_catalogo.php'
+							})
 						})	
 					}
 					else {
@@ -295,6 +301,7 @@ RecuperarLS_carrito();
 				});				
 			}
 		}
+		/**funcion verificar stock  */
 		async	function Verificar_stock() {
 			let productos;
 			funcion='verificar_stock';
@@ -306,5 +313,15 @@ RecuperarLS_carrito();
 			})
 			let error = await response.text();
 			return error;
+		}
+		/** funcion registrar compra**/
+		function Registrar_compra(nombre,dni) {
+			funcion='registrar_compra';
+			let total=$('#total').get(0).textContent;
+			let productos=RecuperarLS();
+			let json = JSON.stringify(productos);
+			$.post('../controlador/CompraController.php',{funcion,total,nombre,dni,json},(response)=>{
+				console.log(response);
+			})
 		}
 })
