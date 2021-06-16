@@ -26,5 +26,13 @@ class Venta{
         $query = $this->acceso->prepare($sql);
         $query->execute(array(':id_venta'=>$id_venta));            
     }
+    /**funcion buscar o listar venta */
+    function buscar(){
+        $sql="SELECT id_venta,fecha,cliente,dni,total, CONCAT(usuario.nombre_us,' ',usuario.apellidos_us) as vendedor FROM venta join usuario on vendedor=id_usuario";
+        $query = $this->acceso->prepare($sql);
+        $query->execute();
+        $this->objetos=$query->fetchall();
+        return $this->objetos;
+    }
 }
 ?>

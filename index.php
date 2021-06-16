@@ -25,7 +25,7 @@ session_destroy();
         </div>
         <div class="contenido-login">
             <form action="controlador/LoginController.php" method="post">
-            <img src="img/user.svg" alt="">
+            <img src="img/user.png" alt="">
             <h2>Farmacia</h2>
             <div class="input-div dni">
                 <div class="i">
