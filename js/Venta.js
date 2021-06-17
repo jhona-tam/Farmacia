@@ -18,10 +18,60 @@ $(document).ready(function() {
             { "data": "vendedor" },
             { "defaultContent": `<button class="btn btn-secondary" title="Imprimir"><i class="fas fa-print"></i></button>
                                 <button class="ver btn btn-success" type="button" data-toggle="modal" data-target="#vista_venta" title="Ver"><i class="fas fa-search"></i></button>
-                                <button class="btn btn-danger" title="Eliminar"><i class="fas fa-trash"></i></button`, }
+                                <button class="borrar btn btn-danger" title="Eliminar"><i class="fas fa-trash"></i></button`, }
         ],
         "language": espanol
     } );
+    /** evento eliminar venta **/
+    $('#tabla_venta tbody').on('click','.borrar',function(){
+        let datos = datatable.row($(this).parents()).data();
+        let id = datos.id_venta;
+        funcion="borrar_venta";
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+              confirmButton: 'btn btn-success m-1',
+              cancelButton: 'btn btn-danger m-1'
+            },
+            buttonsStyling: false
+          })
+          
+          swalWithBootstrapButtons.fire({
+            title: 'Esta seguro de eliminar la venta: '+id+'?',
+            text: "no podras revertir esto!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Si, eliminar esto!',
+            cancelButtonText: 'No, cancelar!',
+            reverseButtons: true
+          }).then((result) => {
+            if (result.isConfirmed) {
+                $.post('../controlador/DetalleVentaController.php',{funcion,id},(response)=>{
+                    if (response=='delete') {
+                        swalWithBootstrapButtons.fire(
+                           'Eliminado!',
+                           'La venta: '+id+' ha sido eliminado',
+                           'success'
+                        )
+                    }
+                    else if (response='nodelete') {
+                        swalWithBootstrapButtons.fire(
+                           'Cancelado',
+                           'No tienes prioridad para eliminar',
+                           'error'
+                        )                       
+                    }
+                })
+              
+            } else if (result.dismiss === Swal.DismissReason.cancel) {
+              swalWithBootstrapButtons.fire(
+                'Cancelado',
+                'La venta no se elimino ',
+                'error'
+              )
+            }
+          })   
+    })
+    /** evento de la tabla muestra ventas **/
     $('#tabla_venta tbody').on('click','.ver',function(){
         let datos = datatable.row($(this).parents()).data();
         let id = datos.id_venta;

@@ -1,5 +1,5 @@
 <?php
-include 'Conexion.php';
+include_once 'Conexion.php';
 class VentaProducto{
     var $objetos;
     public function __construct(){
@@ -18,6 +18,12 @@ class VentaProducto{
         $query->execute(array(':id'=>$id));
         $this->objetos=$query->fetchall();
         return $this->objetos;
+    }
+    /**funcion de borrar venta prodcuto */
+    function borrar($id_venta){
+        $sql="DELETE FROM venta_producto where venta_id_venta=:id_venta"; 
+        $query = $this->acceso->prepare($sql);
+        $query->execute(array(':id_venta'=>$id_venta));
     }
 }
 ?>
