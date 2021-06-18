@@ -86,8 +86,86 @@ include_once 'layouts/nav.php'
           </ol>
         </div>
       </div>
-    </div><!-- /.container-fluid -->
+    </div>
   </section>
+  <!--seccion de los card contables-->
+  <section>
+      <div class="container-fluid">
+          <div class="card card-success">
+              <div class="card-header">
+                  <h3 class="card-title">Consultas</h3>                        
+              </div>
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-lg-3 col-6">
+                    <!-- card celeste -->
+                    <div class="small-box bg-info">
+                      <div class="inner">
+                        <h3 id="venta_dia_vendedor">0</h3>
+
+                        <p>Venta del dia por vendedor</p>
+                      </div>
+                      <div class="icon">
+                        <i class="fas fa-user"></i>
+                      </div>
+                      <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                  </div>
+                  <!-- hasta aqui el card azul -->
+                  <div class="col-lg-3 col-6">
+                    <!-- card verde -->
+                    <div class="small-box bg-success">
+                      <div class="inner">
+                        <h3 id="venta_diaria">0</h3>
+
+                        <p>Venta diraria
+                        </p>
+                      </div>
+                      <div class="icon">
+                        <i class="fas fa-shopping-cart"></i>
+                      </div>
+                      <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                  </div>
+                  <!-- hasta aqui el card verde -->
+                  <div class="col-lg-3 col-6">
+                    <!-- card amarillo -->
+                    <div class="small-box bg-warning">
+                      <div class="inner">
+                        <h3 id="venta_mensual">0</h3>
+
+                        <p>Venta mensual</p>
+                      </div>
+                      <div class="icon">
+                        <i class="fas fa-calendar-alt"></i>
+                      </div>
+                      <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                  </div>
+                  <!-- hasta aqui el card amarillo -->
+                  <div class="col-lg-3 col-6">
+                    <!-- card rojo -->
+                    <div class="small-box bg-danger">
+                      <div class="inner">
+                        <h3 id="venta_anual">0</h3>
+
+                        <p>Venta anual</p>
+                      </div>
+                      <div class="icon">
+                        <i class="fas fa-signal"></i>
+                      </div>
+                      <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                  </div>
+                  <!-- hasta aqui el card rojo -->
+                </div>                
+              </div>
+              <div class="card-footer">
+              </div>
+          </div>
+      </div>
+  </section>
+  <!---seccion de datatable-->
   <section>
       <div class="container-fluid">
           <div class="card card-success">

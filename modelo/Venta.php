@@ -56,5 +56,37 @@ class Venta{
         $this->objetos=$query->fetchall();
         return $this->objetos;
     }
+    /**funcion mostrar venta por vendedor **/
+    function venta_dia_vendedor($id_usuario){
+        $sql="SELECT SUM(total) as venta_dia_vendedor FROM `venta` WHERE vendedor=:id_usuario and date(fecha)= date(curdate())";
+        $query = $this->acceso->prepare($sql);
+        $query->execute(array(':id_usuario'=>$id_usuario));
+        $this->objetos=$query->fetchall();
+        return $this->objetos;
+    }
+    /**funcion mostrar venta por dia **/
+    function venta_diaria(){
+        $sql="SELECT SUM(total) as venta_diaria FROM `venta` WHERE date(fecha)= date(curdate())";
+        $query = $this->acceso->prepare($sql);
+        $query->execute();
+        $this->objetos=$query->fetchall();
+        return $this->objetos;
+    }
+    /**funcion mostrar venta por mes **/
+    function venta_mensual(){
+        $sql="SELECT SUM(total) as venta_mensual FROM `venta` WHERE year(fecha)= year(curdate()) and month(fecha) = month(curdate())";
+        $query = $this->acceso->prepare($sql);
+        $query->execute();
+        $this->objetos=$query->fetchall();
+        return $this->objetos;
+    }
+    /**funcion mostrar venta por año **/
+    function venta_anual(){
+        $sql="SELECT SUM(total) as venta_anual FROM `venta` WHERE year(fecha)= year(curdate())";
+        $query = $this->acceso->prepare($sql);
+        $query->execute();
+        $this->objetos=$query->fetchall();
+        return $this->objetos;
+    }
 }
 ?>

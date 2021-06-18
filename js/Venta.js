@@ -1,5 +1,16 @@
 $(document).ready(function() {
-    let funcion="listar";
+    mostrar_consultas();
+    function mostrar_consultas() {
+        let funcion='mostrar_consultas';
+        $.post('../controlador/VentaController.php',{funcion},(response)=>{
+            const vistas = JSON.parse(response);
+            $('#venta_dia_vendedor').html(vistas.venta_dia_vendedor);
+            $('#venta_diaria').html(vistas.venta_diaria);
+            $('#venta_mensual').html(vistas.venta_mensual);
+            $('#venta_anual').html(vistas.venta_anual);
+        })
+    }
+    funcion="listar";
     
 
     /**funcion de datatables **/
