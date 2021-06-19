@@ -58,6 +58,7 @@ if($_POST['funcion']=='editar_usuario'){
     $usuario->editar($id_usuario,$telefono,$residencia,$correo,$sexo,$adicional);
     echo 'editado';
 }
+/**funcion para cambiar contraseña */
 if($_POST['funcion']=='cambiar_contra'){
     $id_usuario=$_POST['id_usuario'];
     $oldpass=$_POST['oldpass'];
