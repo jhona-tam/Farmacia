@@ -44,4 +44,24 @@ if ($_POST['funcion']=='mostrar_consultas') {
     $jsonstring = json_encode($json[0]);
     echo $jsonstring;
 }
+/** funciones de ventas mes **/
+if ($_POST['funcion']=='venta_mes') {
+    $venta->venta_mes();
+    $json=array();
+    foreach ($venta->objetos as $objeto) {
+        $json[]=$objeto;
+    }
+    $jsonstring = json_encode($json);
+    echo $jsonstring;
+}
+/** *funcion de vendedores*/
+if ($_POST['funcion']=='vendedor_mes') {
+    $venta->vendedor_mes();
+    $json=array();
+    foreach ($venta->objetos as $objeto) {
+        $json[]=$objeto;
+    }
+    $jsonstring = json_encode($json);
+    echo $jsonstring;
+}
 ?>

@@ -88,10 +88,27 @@ class Venta{
         $this->objetos=$query->fetchall();
         return $this->objetos;
     }
+    /**funcion buscar venta por id */
     function buscar_id($id_venta){
         $sql="SELECT id_venta,fecha,cliente,dni,total, CONCAT(usuario.nombre_us,' ',usuario.apellidos_us) as vendedor FROM venta join usuario on vendedor=id_usuario and id_venta=:id_venta";
         $query = $this->acceso->prepare($sql);
         $query->execute(array(':id_venta'=>$id_venta));
+        $this->objetos=$query->fetchall();
+        return $this->objetos;
+    }
+    /**funcion de chartjs */
+    function venta_mes(){
+        $sql="SELECT SUM(total) as cantidad, month(fecha) as mes  FROM `venta` WHERE year(fecha) = year(curdate()) group by month(fecha)";
+        $query = $this->acceso->prepare($sql);
+        $query->execute();
+        $this->objetos=$query->fetchall();
+        return $this->objetos;
+    }
+    /**funcion de vendedores */
+    function vendedor_mes(){
+        $sql="SELECT CONCAT(usuario.nombre_us,' ',usuario.apellidos_us) as vendedor_nombre, SUM(total) as cantidad FROM `venta` join usuario on id_usuario=vendedor where month(fecha)=month(curdate()) and year(fecha)=year(curdate()) group by vendedor order by cantidad DESC LIMIT 3";
+        $query = $this->acceso->prepare($sql);
+        $query->execute();
         $this->objetos=$query->fetchall();
         return $this->objetos;
     }

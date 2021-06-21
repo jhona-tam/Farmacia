@@ -164,6 +164,7 @@ class Usuario{
         foreach ($this->objetos as $objeto) {
             $contrasena_actual = $objeto->contrasena_us;
         }
+        /**inscriptacion */
         if(strpos($contrasena_actual,'$2y$10$')===0){
             if(password_verify($pass,$contrasena_actual)){                
                 $sql="DELETE FROM usuario where id_usuario=:id";

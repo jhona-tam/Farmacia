@@ -108,7 +108,7 @@ include_once 'layouts/nav.php'
                       <div class="icon">
                         <i class="fas fa-user"></i>
                       </div>
-                      <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                      <a href="adm_mas_consultas.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                   </div>
                   <!-- hasta aqui el card azul -->
@@ -124,7 +124,7 @@ include_once 'layouts/nav.php'
                       <div class="icon">
                         <i class="fas fa-shopping-cart"></i>
                       </div>
-                      <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                      <a href="adm_mas_consultas.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                   </div>
                   <!-- hasta aqui el card verde -->
@@ -139,7 +139,7 @@ include_once 'layouts/nav.php'
                       <div class="icon">
                         <i class="fas fa-calendar-alt"></i>
                       </div>
-                      <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                      <a href="adm_mas_consultas.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                   </div>
                   <!-- hasta aqui el card amarillo -->
@@ -154,7 +154,7 @@ include_once 'layouts/nav.php'
                       <div class="icon">
                         <i class="fas fa-signal"></i>
                       </div>
-                      <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                      <a href="adm_mas_consultas.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                   </div>
                   <!-- hasta aqui el card rojo -->
