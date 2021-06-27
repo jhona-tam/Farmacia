@@ -64,4 +64,14 @@ if ($_POST['funcion']=='vendedor_mes') {
     $jsonstring = json_encode($json);
     echo $jsonstring;
 }
+/** *funcion de ventas anual*/
+if ($_POST['funcion']=='ventas_anual') {
+	$venta->ventas_anual();
+	$json=array();
+	foreach ($venta->objetos as $objeto) {
+			$json[]=$objeto;
+	}
+	$jsonstring = json_encode($json);
+	echo $jsonstring;
+}
 ?>

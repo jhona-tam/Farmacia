@@ -111,6 +111,14 @@ class Venta{
         $query->execute();
         $this->objetos=$query->fetchall();
         return $this->objetos;
-    }
+    }		
+		/**funcion de ventas anual */
+    function ventas_anual(){
+			$sql="SELECT SUM(total) as cantidad, month(fecha) as mes  FROM `venta` WHERE year(fecha) = year(date_add(curdate(),INTERVAL -1 YEAR)) group by month(fecha)";
+			$query = $this->acceso->prepare($sql);
+			$query->execute();
+			$this->objetos=$query->fetchall();
+			return $this->objetos;
+	}
 }
 ?>
