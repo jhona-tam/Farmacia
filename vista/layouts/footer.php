@@ -16,4 +16,25 @@
 <!-- select2 -->
 <script src="../js/select2.js"></script>
 </body>
+<!---Actualizar foto de perfil de usuario --->
+<script>
+  let funcion = 'devolver_avatar';
+  $.post('../controlador/UsuarioController.php',{funcion},(response)=>{
+    const avatar = JSON.parse(response);
+    $('#avatar4').attr('src','../img/'+avatar.avatar);
+  })  
+  funcion='tipo_usuario';
+  $.post('../controlador/UsuarioController.php',{funcion},(response)=>{
+    if (response==1) {
+      $('#gestion_lote').hide();
+    }
+    else if (response==2) {
+      $('#gestion_lote').hide();
+      $('#gestion_usuario').hide();
+      $('#gestion_producto').hide();
+      $('#gestion_atributo').hide();
+      $('#gestion_proveedor').hide();
+    }
+  })
+</script>
 </html>

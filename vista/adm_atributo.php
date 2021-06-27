@@ -1,12 +1,12 @@
 <?php
 session_start();
-if ($_SESSION['us_tipo']==1||$_SESSION['us_tipo']=3) {
-  include_once 'layouts/header.php'
+if ($_SESSION['us_tipo']==1||$_SESSION['us_tipo']==3){
+  include_once 'layouts/header.php';
 ?>
   <title>Adm | atributo</title>
 
 <?php
-include_once 'layouts/nav.php'
+include_once 'layouts/nav.php';
 ?>
 <!-- modal de cambiar foto de laboratorio -->
 <div class="modal fade" id="cambiologo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

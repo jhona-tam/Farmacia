@@ -1,12 +1,12 @@
 <?php
 session_start();
 if ($_SESSION['us_tipo']==3){
-  include_once 'layouts/header.php'
+  include_once 'layouts/header.php';
 ?>
   <title>Adm | Gestion lote</title>
 
 <?php
-include_once 'layouts/nav.php'
+include_once 'layouts/nav.php';
 ?>
 <!-- modal editar lote-->
 <div class="modal fade" id="editarlote" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

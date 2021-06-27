@@ -1,12 +1,12 @@
 <?php
 session_start();
-if ($_SESSION['us_tipo']==1||$_SESSION['us_tipo']=3) {
-  include_once 'layouts/header.php'
+if ($_SESSION['us_tipo']==1||$_SESSION['us_tipo']==3||$_SESSION['us_tipo']==2) {
+  include_once 'layouts/header.php';
 ?>
   <title>Adm | Catalogo</title>
 
 <?php
-include_once 'layouts/nav.php'
+include_once 'layouts/nav.php';
 ?>
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">

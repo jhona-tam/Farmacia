@@ -1,12 +1,12 @@
 <?php
 session_start();
-if ($_SESSION['us_tipo']==3||$_SESSION['us_tipo']==1){
-  include_once 'layouts/header.php'
+if ($_SESSION['us_tipo']==3||$_SESSION['us_tipo']==1||$_SESSION['us_tipo']==2){
+  include_once 'layouts/header.php';
 ?>
   <title>Adm | Gestion venta</title>
 
 <?php
-include_once 'layouts/nav.php'
+include_once 'layouts/nav.php';
 ?>
 <!-- modal de -->
 <div class="modal fade" id="vista_venta" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -108,7 +108,7 @@ include_once 'layouts/nav.php'
                       <div class="icon">
                         <i class="fas fa-user"></i>
                       </div>
-                      <a href="adm_mas_consultas.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                      <a href="adm_mas_consultas.php" class="small-box-footer">Mas informacion <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                   </div>
                   <!-- hasta aqui el card azul -->
@@ -124,7 +124,7 @@ include_once 'layouts/nav.php'
                       <div class="icon">
                         <i class="fas fa-shopping-cart"></i>
                       </div>
-                      <a href="adm_mas_consultas.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                      <a href="adm_mas_consultas.php" class="small-box-footer">Mas informacion <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                   </div>
                   <!-- hasta aqui el card verde -->
@@ -139,7 +139,7 @@ include_once 'layouts/nav.php'
                       <div class="icon">
                         <i class="fas fa-calendar-alt"></i>
                       </div>
-                      <a href="adm_mas_consultas.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                      <a href="adm_mas_consultas.php" class="small-box-footer">Mas informacion <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                   </div>
                   <!-- hasta aqui el card amarillo -->
@@ -154,7 +154,7 @@ include_once 'layouts/nav.php'
                       <div class="icon">
                         <i class="fas fa-signal"></i>
                       </div>
-                      <a href="adm_mas_consultas.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                      <a href="adm_mas_consultas.php" class="small-box-footer">Mas informacion <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                   </div>
                   <!-- hasta aqui el card rojo -->
