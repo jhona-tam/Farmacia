@@ -15,7 +15,7 @@ include_once 'layouts/nav.php';
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Cátalogo</h1>
+            <h1 class="animate__animated animate__fadeIn">Cátalogo</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -34,7 +34,7 @@ include_once 'layouts/nav.php';
                     <h3 class="card-title">Lotes en riesgo</h3>                    
                 </div>
                 <div class="card-body p-0 table-responsive">
-                  <table class="table table-hover text-nowrap">
+                  <table class="animate__animated animate__fadeIn table table-hover text-nowrap">
                     <thead class="table-success">
                       <tr>
                         <th>Cod</th>
