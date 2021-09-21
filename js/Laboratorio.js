@@ -34,7 +34,7 @@ $(document).ready(function(){
                 $('#form-crear-laboratorio').trigger('reset');
                 buscar_lab();
             }
-            edit==false;
+            edit=false;
         })
         e.preventDefault();
     });

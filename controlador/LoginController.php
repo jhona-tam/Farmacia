@@ -19,9 +19,9 @@ if(!empty($_SESSION['us_tipo'])){
             break;
     }
 }
-else{
-    $usuario->Loguearse($user,$pass);
-    if(!empty($usuario->objetos)){
+else{    
+    if(!empty($usuario->Loguearse($user,$pass)=="logueado")){
+        $usuario->obtener_dato_logueado($user);
         foreach ($usuario->objetos as $objeto){
             $_SESSION['usuario']=$objeto->id_usuario;
             $_SESSION['us_tipo']=$objeto->us_tipo;

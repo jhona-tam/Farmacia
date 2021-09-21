@@ -34,7 +34,7 @@ $(document).ready(function(){
                 $('#form-crear-tipo').trigger('reset');
                 buscar_tip();
             }
-            edit==false;
+            edit=false;
         })
         e.preventDefault();
     });
