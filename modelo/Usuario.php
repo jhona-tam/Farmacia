@@ -129,39 +129,75 @@ class Usuario{
             echo 'add';
         }
     }
-    /**funcion para descender un usario por modal*/
+    /**funcion para descender un usario por modal**/
     function ascender($pass,$id_ascendido,$id_usuario){
-        $sql="SELECT id_usuario FROM usuario where id_usuario=:id_usuario and contrasena_us=:pass";
+        $sql="SELECT * FROM usuario where id_usuario=:id_usuario";
         $query = $this->acceso->prepare($sql);
-        $query->execute(array(':id_usuario'=>$id_usuario,':pass'=>$pass));
+        $query->execute(array(':id_usuario'=>$id_usuario));
         $this->objetos=$query->fetchall();
-        if(!empty($this->objetos)){
-            $tipo=1;
-            $sql="UPDATE usuario SET us_tipo=:tipo where id_usuario=:id";
-            $query = $this->acceso->prepare($sql);
-            $query->execute(array(':id'=>$id_ascendido,':tipo'=>$tipo));
-            echo 'ascendido';
+        foreach ($this->objetos as $objeto) {
+            $contrasena_actual = $objeto->contrasena_us;
+        }
+        /**inscriptacion */
+        if(strpos($contrasena_actual,'$2y$10$')===0){
+            if(password_verify($pass,$contrasena_actual)){  
+                $tipo=1;              
+                $sql="UPDATE usuario SET us_tipo=:tipo where id_usuario=:id";
+                $query = $this->acceso->prepare($sql);
+                $query->execute(array(':id'=>$id_ascendido,':tipo'=>$tipo));
+                echo 'ascendido';
+            }
+            else{
+                echo 'no ascendido';
+            }          
         }
         else{
-            echo 'noascendido';
-        }
+            if ($pass==$contrasena_actual) {                
+                $tipo=1;              
+                $sql="UPDATE usuario SET us_tipo=:tipo where id_usuario=:id";
+                $query = $this->acceso->prepare($sql);
+                $query->execute(array(':id'=>$id_ascendido,':tipo'=>$tipo));
+                echo 'ascendido';          
+            }
+            else{
+                echo 'no ascendido';
+            }
+        }        
     }
-    /**funcion para descender un usario por modal */
+    /**funcion para descender un usario por modal */    
     function descender($pass,$id_descendido,$id_usuario){
-        $sql="SELECT id_usuario FROM usuario where id_usuario=:id_usuario and contrasena_us=:pass";
+        $sql="SELECT * FROM usuario where id_usuario=:id_usuario";
         $query = $this->acceso->prepare($sql);
-        $query->execute(array(':id_usuario'=>$id_usuario,':pass'=>$pass));
+        $query->execute(array(':id_usuario'=>$id_usuario));
         $this->objetos=$query->fetchall();
-        if(!empty($this->objetos)){
-            $tipo=2;
-            $sql="UPDATE usuario SET us_tipo=:tipo where id_usuario=:id";
-            $query = $this->acceso->prepare($sql);
-            $query->execute(array(':id'=>$id_descendido,':tipo'=>$tipo));
-            echo 'descendido';
+        foreach ($this->objetos as $objeto) {
+            $contrasena_actual = $objeto->contrasena_us;
+        }
+        /**inscriptacion */
+        if(strpos($contrasena_actual,'$2y$10$')===0){
+            if(password_verify($pass,$contrasena_actual)){  
+                $tipo=2;              
+                $sql="UPDATE usuario SET us_tipo=:tipo where id_usuario=:id";
+                $query = $this->acceso->prepare($sql);
+                $query->execute(array(':id'=>$id_descendido,':tipo'=>$tipo));
+                echo 'descendido';
+            }
+            else{
+                echo 'no descendido';
+            }          
         }
         else{
-            echo 'nodescendido';
-        }
+            if ($pass==$contrasena_actual) {                
+                $tipo=2;              
+                $sql="UPDATE usuario SET us_tipo=:tipo where id_usuario=:id";
+                $query = $this->acceso->prepare($sql);
+                $query->execute(array(':id'=>$id_descendido,':tipo'=>$tipo));
+                echo 'descendido';          
+            }
+            else{
+                echo 'no descendido';
+            }
+        }        
     }
     /**funcion de eliminar usuario*/
     function borrar($pass,$id_borrado,$id_usuario){
