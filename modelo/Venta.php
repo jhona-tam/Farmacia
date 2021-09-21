@@ -120,5 +120,13 @@ class Venta{
 			$this->objetos=$query->fetchall();
 			return $this->objetos;
 	}
+    	/**5 productos mas vendidos*/
+        function producto_mas_vendido(){
+			$sql="SELECT nombre,concentracion,adicional, SUM(cantidad) as total FROM `venta` JOIN venta_producto ON id_venta=venta_id_venta JOIN producto ON id_producto=producto_id_producto WHERE year(fecha)=year(curdate()) and month(fecha) = month(curdate()) group by producto_id_producto order by total desc limit 5";
+			$query  = $this->acceso->prepare($sql);
+			$query->execute();
+			$this->objetos=$query->fetchall();
+			return $this->objetos;
+	}
 }
 ?>
