@@ -138,4 +138,38 @@ if($_POST['funcion']=='verificar_stock'){
     }
     echo $error;
 }
+/**funcion traer productos */
+if($_POST['funcion']=='traer_productos'){
+    $html="";
+    $productos=json_decode($_POST['productos']);
+    foreach ($productos as $resultado) {
+        $producto->buscar_id($resultado->id);
+        foreach ($producto->objetos as $objeto) {
+            $subtotal=$objeto->precio*$resultado->cantidad;
+            $producto->obtener_stock($objeto->id_producto);
+            foreach ($producto->objetos as $obj) {
+                $stock=$obj->total;
+            }
+            $html.="
+            <tr prodId='$objeto->id_producto' prodPrecio='$objeto->precio'>                
+							<td>$objeto->nombre</td>
+							<td>$stock</td>
+							<td class='precio'>$objeto->precio</td>
+							<td>$objeto->concentracion</td>
+							<td>$objeto->adicional</td>
+							<td>$objeto->laboratorio</td>
+							<td>$objeto->presentacion</td>
+							<td>
+								<input type='number' min='1' class='form-control cantidad_producto' value='$resultado->cantidad'>
+							</td>
+							<td class='subtotales'>
+								<h5>$subtotal</h5>
+							</td>
+							<td><button class='borrar-producto btn btn-danger'><i class='fas fa-times-circle'></i></button></td>
+						</tr>
+            ";
+        }
+    }
+    echo $html;
+}
 ?>
